@@ -1,0 +1,1043 @@
+/* General Styles */
+:root {
+    /* Light Mode Base Colors - now more vibrant */
+    --primary-color-light: #5e35b1; /* Deep Purple */
+    --secondary-color-light: #a7d9ed; /* Darker vibrant light blue for even sections/background */
+    --text-color-light: #2c3e50; /* Darker text */
+    --light-text-color-light: #7f8c8d; /* Muted text */
+    --white-color-light: #c0e6f2; /* Complementary darker light blue */
+    --card-bg-light: #c0e6f2; /* Match main section background */
+    --hover-color-light: #7b4397; /* Lighter purple for hover */
+    --shadow-light-light: rgba(0, 0, 0, 0.1);
+
+    /* New Vibrant Light Mode Accents */
+    --gradient-start-light: #00c6ff; /* Bright Blue */
+    --gradient-end-light: #0072ff;   /* Royal Blue */
+    --button-gradient-start-light: #ff6a00; /* Orange/Coral */
+    --button-gradient-end-light: #ee0979;   /* Pink */
+    --neon-glow-color-light: rgba(0, 198, 255, 0.5); /* Blue glow */
+    --card-gradient-border-light: rgba(0, 198, 255, 0.3); /* Blue border */
+    --card-bg-glass-light: rgba(255, 255, 255, 0.1);
+    --card-shadow-glass-light: rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode Variables - now the primary theme */
+body.dark-mode, :root {
+    --primary-color: #bb86fc; /* Light Purple for accents */
+    --secondary-color: #121212; /* Deep Charcoal background */
+    --text-color: #e0e0e0; /* Light Gray text */
+    --light-text-color: #b0b0b0; /* Muted light gray text */
+    --white-color: #1f1f1f; /* Darker card/element background */
+    --card-bg: #1f1f1f; /* Dark card background */
+    --hover-color: #3f3f3f; /* Slightly lighter dark for hover */
+    --shadow-light: rgba(0, 0, 0, 0.3);
+
+    /* Vibrant Dark Mode Accents */
+    --gradient-start: #0f0c29; /* Darker shade of purple/blue */
+    --gradient-end: #3a0e90; /* Deep purple */
+    --button-gradient-start: #fc00ff; /* Bright Pink */
+    --button-gradient-end: #00dbde;   /* Cyan */
+    --neon-glow-color: rgba(187, 134, 252, 0.7); /* Purple glow */
+    --card-gradient-border: rgba(187, 134, 252, 0.3);
+    --card-bg-glass: rgba(255, 255, 255, 0.05);
+    --card-shadow-glass: rgba(0, 0, 0, 0.5);
+}
+
+/* Override light mode variables when dark-mode is active */
+body.dark-mode {
+    --primary-color-light: var(--primary-color);
+    --secondary-color-light: var(--secondary-color);
+    --text-color-light: var(--text-color);
+    --light-text-color-light: var(--light-text-color);
+    --white-color-light: var(--white-color);
+    --card-bg-light: var(--card-bg);
+    --hover-color-light: var(--hover-color);
+    --shadow-light-light: var(--shadow-light);
+    --gradient-start-light: var(--gradient-start);
+    --gradient-end-light: var(--gradient-end);
+    --button-gradient-start-light: var(--button-gradient-start);
+    --button-gradient-end-light: var(--button-gradient-end);
+    --neon-glow-color-light: var(--neon-glow-color);
+    --card-gradient-border-light: var(--card-gradient-border);
+    --card-bg-glass-light: var(--card-bg-glass);
+    --card-shadow-glass-light: var(--card-shadow-glass);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    background: linear-gradient(-45deg, var(--secondary-color), var(--gradient-start), var(--gradient-end));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Scroll Progress Bar */
+#scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--button-gradient-start), var(--button-gradient-end));
+    z-index: 1002; /* Above navbar */
+    width: 0%;
+}
+
+/* Apply colors based on theme */
+:root:not(.dark-mode) {
+    --primary-color: var(--primary-color-light);
+    --secondary-color: var(--secondary-color-light);
+    --text-color: var(--text-color-light);
+    --light-text-color: var(--light-text-color-light);
+    --white-color: var(--white-color-light);
+    --card-bg: var(--card-bg-light);
+    --hover-color: var(--hover-color-light);
+    --shadow-light: var(--shadow-light-light);
+
+    --gradient-start: var(--gradient-start-light);
+    --gradient-end: var(--gradient-end-light);
+    --button-gradient-start: var(--button-gradient-start-light);
+    --button-gradient-end: var(--button-gradient-end-light);
+    --neon-glow-color: var(--neon-glow-color-light);
+    --card-gradient-border: var(--card-gradient-border-light);
+    --card-bg-glass: var(--card-bg-glass-light);
+    --card-shadow-glass: var(--card-shadow-glass-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px var(--neon-glow-color);
+}
+
+/* Gradient Text for major headings */
+h1.name, section h2 {
+    background: linear-gradient(90deg, var(--primary-color), var(--neon-glow-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    padding-bottom: 10px; /* Add some space below the gradient text */
+}
+
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's on top of everything */
+    transition: opacity 0.5s ease-out;
+    opacity: 1;
+}
+
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-top: 8px solid var(--primary-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#preloader p {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Dark mode adjustments for preloader */
+body.dark-mode #preloader {
+    background-color: var(--secondary-color);
+}
+
+body.dark-mode .spinner {
+    border: 8px solid rgba(255, 255, 255, 0.1);
+    border-top: 8px solid var(--primary-color);
+}
+
+body.dark-mode #preloader p {
+    color: var(--text-color);
+}
+
+.navbar {
+    background-color: var(--white-color);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Removed position: relative; as it's not strictly necessary with flexbox for this layout */
+}
+
+.navbar .logo a {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    transition: color 0.5s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.navbar .logo a:hover {
+    color: var(--primary-color);
+}
+
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Align nav links vertically */
+    /* margin-right: auto; Removed as toggle is now inside nav-links */
+}
+
+.navbar .nav-links li {
+    margin-left: 30px;
+}
+
+.navbar .nav-links a {
+    color: var(--light-text-color);
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.5s ease;
+}
+
+.navbar .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--neon-glow-color);
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar .nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: var(--text-color);
+    text-align: center;
+    padding: 120px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    transition: background 0.5s ease, color 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Light mode specific text color for hero section */
+body:not(.dark-mode) .hero-section .name,
+body:not(.dark-mode) .hero-section .title,
+body:not(.dark-mode) .hero-section .tagline {
+    color: var(--text-color-light); /* Use a darker text color for light mode */
+    -webkit-text-fill-color: var(--text-color-light); /* Ensure fill color for gradient text */
+}
+
+.hero-section .name {
+    font-size: 4rem; /* Larger font size */
+    margin-bottom: 15px; /* More breathing room */
+    color: var(--text-color);
+    transition: color 0.5s ease;
+    background: linear-gradient(90deg, var(--primary-color), var(--neon-glow-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    animation: float 4s ease-in-out infinite;
+}
+
+.hero-section .title {
+    font-size: 2rem; /* Larger font size */
+    font-weight: 400;
+    margin-bottom: 25px;
+    color: var(--light-text-color);
+    animation: float 4s ease-in-out infinite 0.5s;
+}
+
+.hero-section .tagline {
+    font-size: 1.4rem; /* Larger font size */
+    font-weight: 400;
+    opacity: 0.9;
+    color: var(--light-text-color);
+    animation: float 4s ease-in-out infinite 1s;
+}
+
+/* Floating animation for hero elements */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Section General Styling */
+section {
+    padding: 100px 0; /* More breathing room */
+    background-color: var(--white-color);
+    margin-bottom: 30px; /* More breathing room */
+    box-shadow: 0 2px 8px var(--shadow-light);
+    border-radius: 8px;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+section:nth-of-type(even) {
+    background-color: var(--secondary-color);
+    transition: background-color 0.5s ease;
+}
+
+section h2 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    font-size: 3rem; /* Larger section titles */
+    margin-bottom: 60px; /* More breathing room */
+    background: linear-gradient(90deg, var(--primary-color), var(--neon-glow-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+/* About Section */
+.about-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Spacing between image and text */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.profile-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 0 5px var(--neon-glow-color);
+    transition: border-color 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease;
+    animation: float 4s ease-in-out infinite 0.5s;
+    background-image: url('Assets\Arsalan_Image.jpg');
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4), 0 0 0 8px var(--neon-glow-color);
+}
+
+.about-section p {
+    font-size: 1.15rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--light-text-color);
+    transition: color 0.5s ease;
+    line-height: 1.8;
+}
+
+/* Media Queries for About Section */
+@media (min-width: 768px) {
+    .about-content {
+        flex-direction: row; /* Horizontal layout on larger screens */
+        text-align: left;
+    }
+
+    .about-content .profile-image {
+        margin-right: 40px;
+        margin-bottom: 0;
+    }
+
+    .about-section p {
+        text-align: left;
+        margin: 0; /* Remove auto margin for text in row layout */
+    }
+}
+
+/* Skills Section */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* More spacing */
+    margin-top: 40px;
+}
+
+.skill-badge {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 12px 25px; /* Larger badges */
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.skill-badge:hover {
+    transform: translateY(-8px) scale(1.05);
+    background-color: var(--hover-color);
+    box-shadow: 0 0 20px var(--neon-glow-color), 0 0 0 3px var(--neon-glow-color); /* Neon glow on hover */
+}
+
+/* Projects Section */
+.projects-slider {
+    margin-top: 40px;
+    padding-bottom: 60px; /* Space for pagination */
+    position: relative;
+}
+
+.projects-slider .swiper-slide {
+    height: auto;
+}
+
+.project-card {
+    background: var(--card-bg-glass);
+    backdrop-filter: blur(15px); /* Stronger glassmorphism effect */
+    border: 1px solid var(--card-gradient-border);
+    border-image: linear-gradient(to right, var(--neon-glow-color), var(--primary-color)) 1; /* Vibrant gradient border */
+    border-radius: 18px; /* Softer rounded corners for glassmorphism */
+    box-shadow: 0 8px 32px 0 var(--card-shadow-glass);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure cards fill slide height */
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2), 0 0 0 3px var(--neon-glow-color); /* Enhanced hover shadow with glow */
+    border-color: var(--primary-color); /* Accent border on hover */
+}
+
+/* Project Type Label */
+.project-type-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(90deg, var(--button-gradient-start), var(--button-gradient-end));
+    color: var(--text-color);
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.project-card .project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--card-gradient-border);
+}
+
+.project-card .project-info {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    transition: color 0.5s ease;
+    text-shadow: 0 0 8px var(--neon-glow-color);
+}
+
+.project-card p {
+    color: var(--light-text-color);
+    font-size: 1rem;
+    flex-grow: 1;
+    margin-bottom: 15px;
+    transition: color 0.5s ease;
+}
+
+.project-card .project-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.view-project-btn, .github-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.5s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    flex-grow: 1;
+    text-align: center;
+    background: linear-gradient(90deg, var(--button-gradient-start), var(--button-gradient-end));
+    color: var(--text-color);
+}
+
+.view-project-btn:hover, .github-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--neon-glow-color);
+}
+
+/* Swiper Navigation */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--primary-color) !important;
+    --swiper-navigation-size: 35px;
+    text-shadow: 0 0 10px var(--neon-glow-color);
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+    background: var(--primary-color) !important;
+    box-shadow: 0 0 8px var(--neon-glow-color);
+}
+
+/* Internship Section */
+.internship-section {
+    padding: 80px 0;
+    background-color: var(--white-color);
+    transition: background-color 0.5s ease;
+}
+
+.internship-section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.internship-item {
+    background: var(--card-bg-glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-gradient-border);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.internship-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3), 0 0 10px var(--neon-glow-color);
+}
+
+.internship-item h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px var(--neon-glow-color);
+}
+
+.internship-duration {
+    font-size: 0.95rem;
+    color: var(--light-text-color);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.internship-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.internship-item ul li {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.internship-item ul li::before {
+    content: '•';
+    color: var(--neon-glow-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none; /* Hidden by default on larger screens */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1001; /* Above other navbar elements */
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: all 0.5s ease;
+    box-shadow: 0 0 5px var(--neon-glow-color);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Education Section */
+.education-section p {
+    text-align: center;
+    font-size: 1.15rem;
+    color: var(--light-text-color);
+    transition: color 0.5s ease;
+}
+
+/* Contact Section */
+.contact-section p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.contact-section a {
+    font-weight: 600;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 40px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--card-gradient-border);
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background-color: var(--card-bg-glass);
+    color: var(--text-color);
+    transition: border-color 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--neon-glow-color);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .primary-btn {
+    align-self: center;
+    width: auto;
+    min-width: 180px;
+    text-align: center;
+    background: linear-gradient(90deg, var(--button-gradient-start), var(--button-gradient-end));
+    color: var(--text-color);
+}
+
+.contact-form .primary-btn:hover {
+    box-shadow: 0 0 15px var(--neon-glow-color);
+}
+
+.form-message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: var(--card-bg-glass);
+    border: 1px solid var(--card-gradient-border);
+}
+
+/* Dark mode adjustments for contact form (already handled by global vars) */
+body.dark-mode .contact-form input[type="text"],
+body.dark-mode .contact-form input[type="email"],
+body.dark-mode .contact-form textarea {
+    background-color: var(--card-bg-glass);
+    border-color: var(--card-gradient-border);
+    color: var(--text-color);
+}
+
+body.dark-mode .contact-form input[type="text"]:focus,
+body.dark-mode .contact-form input[type="email"]:focus,
+body.dark-mode .contact-form textarea:focus {
+    box-shadow: 0 0 0 3px var(--neon-glow-color);
+}
+
+body.dark-mode .form-message {
+    background-color: var(--card-bg-glass);
+    border-color: var(--card-gradient-border);
+    color: var(--primary-color);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--white-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    margin-top: 50px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(90deg, var(--button-gradient-start), var(--button-gradient-end));
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px var(--shadow-light);
+    transition: background 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px var(--neon-glow-color);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.5s ease;
+    z-index: 1005;
+    margin-left: 30px; /* Add margin to separate from last nav link */
+}
+
+.theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.theme-toggle .theme-icon {
+    width: 24px;
+    height: 24px;
+    filter: invert(0%); /* Light mode default */
+    transition: filter 0.5s ease;
+}
+
+body.dark-mode .theme-toggle .theme-icon {
+    filter: invert(100%); /* Dark mode icon color */
+}
+
+/* General Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.5s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: linear-gradient(90deg, var(--button-gradient-start), var(--button-gradient-end)); /* Gradient background */
+    color: var(--text-color);
+    box-shadow: 0 4px 8px var(--shadow-light);
+    margin-top: 30px;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px var(--neon-glow-color);
+}
+
+/* Dark mode specific button styles (already handled by global vars) */
+body.dark-mode .primary-btn {
+    background: linear-gradient(90deg, var(--button-gradient-start), var(--button-gradient-end)); /* Gradient background for dark mode */
+    color: var(--text-color);
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+body.dark-mode .primary-btn:hover {
+    box-shadow: 0 0 15px var(--neon-glow-color);
+}
+
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+        margin-right: 20px; /* Add some space for the toggle button */
+        order: 1;
+    }
+
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--white-color);
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        left: 0;
+        box-shadow: 0 2px 4px var(--shadow-light);
+        padding: 20px 0;
+        transition: all 0.5s ease;
+        margin-right: 0; /* Reset margin for mobile */
+    }
+
+    body.dark-mode .navbar .nav-links {
+        background-color: var(--white-color);
+    }
+
+    .navbar .nav-links.active {
+        display: flex;
+    }
+
+    .navbar .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .navbar .logo {
+        font-size: 1.5rem;
+    }
+
+    /* Ensure theme toggle button is visible and positioned correctly on small screens */
+    .theme-toggle {
+        position: static; /* Reset to static for flex flow */
+        margin-left: 0; /* Reset margin */
+        margin-right: 0; /* Reset spacing from hamburger menu */
+        transform: none; /* Reset transform */
+        order: unset; /* Remove order property for mobile when inside nav-links */
+    }
+
+    .navbar .container {
+        justify-content: space-between; /* Re-enable space-between for proper distribution */
+        padding-right: 0; /* Remove extra padding if any */
+    }
+
+    .hero-section {
+        padding: 60px 20px;
+    }
+
+    .hero-section .name {
+        font-size: 2.2rem;
+    }
+
+    .hero-section .title {
+        font-size: 1.3rem;
+    }
+
+    .hero-section .tagline {
+        font-size: 0.95rem;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .skill-badge {
+        font-size: 0.85rem;
+        padding: 8px 15px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .skill-badge:hover {
+        box-shadow: 0 0 15px var(--neon-glow-color), 0 0 0 2px var(--neon-glow-color);
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+
+    .project-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-form {
+        margin: 30px auto 0 auto;
+    }
+
+    .contact-form input, .contact-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 1.3rem;
+    }
+    .hero-section .name {
+        font-size: 1.8rem;
+    }
+
+    .hero-section .title {
+        font-size: 1.1rem;
+    }
+
+    .hero-section .tagline {
+        font-size: 0.85rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    .skill-badge {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+
+    .projects-slider .swiper-button-next, .projects-slider .swiper-button-prev {
+        display: none; /* Hide nav buttons on very small screens */
+    }
+
+    .contact-form input, .contact-form textarea {
+        padding: 10px;
+    }
+}
+
+/* Dark mode adjustments for new elements */
+body.dark-mode .filter-btn {
+    border-color: var(--primary-color);
+    color: var(--light-text-color);
+    background-color: var(--white-color);
+}
+
+body.dark-mode .filter-btn.active,
+body.dark-mode .filter-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .github-button {
+    background-color: #666;
+}
+
+body.dark-mode .github-button:hover {
+    background-color: #888;
+}
+
+
+/* Responsive adjustments for modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+    }
+}
