@@ -59,30 +59,100 @@ window.addEventListener('scroll', () => {
     scrollProgressBar.style.width = progress + '%';
 });
 
-// Tilt effect for project cards
-const projectCards = document.querySelectorAll('.project-card');
+// Tilt effect for project cards removed as requested.
 
-projectCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const cardRect = card.getBoundingClientRect();
-        const centerX = cardRect.left + cardRect.width / 2;
-        const centerY = cardRect.top + cardRect.height / 2;
+// Project rotation functionality
+let currentProjectIndex = 0;
+const projects = [
+    {
+        type: "AI",
+        image: "Assets/code-explainer_image.png",
+        title: "Code Explainer Project",
+        description: "An AI model leveraging CodeLlama to explain complex code snippets.",
+        viewLink: "#",
+        githubLink: "https://github.com/Arsalankhateeb73/CODE-EXPLAIN"
+    },
+    {
+        type: "ML",
+        image: "Assets/Netflix-stock_image.jpeg",
+        title: "Netflix Stock Data Analysis Agent",
+        description: "An agent designed to analyze Netflix stock data for insights and predictions.",
+        viewLink: "#",
+        githubLink: "https://github.com/Arsalankhateeb73/Netflix_Stock-dat-Analysis"
+    },
+    {
+        type: "AI",
+        image: "Assets/content-suggestion-agent_image.jpeg",
+        title: "Content Suggestion Agent",
+        description: "An intelligent agent that suggests personalized content based on user preferences.",
+        viewLink: "#",
+        githubLink: "https://github.com/Arsalankhateeb73/Content-Suggestion-Agent"
+    },
+    {
+        type: "Web",
+        image: "Assets/Fitty_image.jpg",
+        title: "Fitty: A fitness tracking companion",
+        description: "A responsive web application for fitness tracking online with a user-friendly interface.",
+        viewLink: "#",
+        githubLink: "https://github.com/Arsalankhateeb73/-Fitty-simple-fitness-tracker"
+    },
+    {
+        type: "Web",
+        image: "Assets/Smart-attendance-curriculum-image.JPG",
+        title: "(SCAS)Smart Curriculum and Attendance System",
+        description: "A Smart Curriculum and Attendance System for the University.",
+        viewLink: "#",
+        githubLink: "https://github.com/Arsalankhateeb73/Smart-curriculum-Attendance"
+    },
+    {
+        type: "ML",
+        image: "Assets/Spam_email_image.png",
+        title: "Spam Email Classifier (ML)",
+        description: "A machine learning model to accurately classify and filter out spam emails.",
+        viewLink: "#",
+        githubLink: "https://github.com/Arsalankhateeb73/Spam-email-detection"
+    }
+];
 
-        const mouseX = e.clientX - centerX;
-        const mouseY = e.clientY - centerY;
+function rotateProject(direction) {
+    const rotatingCard = document.querySelector('.rotating-project-card');
+    const projectCard = document.querySelector('.project-card');
+    
+    if (direction === 'next') {
+        currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+    } else {
+        currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+    }
+    
+    const currentProject = projects[currentProjectIndex];
+    
+    // Add rotation animation
+    rotatingCard.style.transform = 'rotateY(90deg)';
+    
+    // After half rotation, update content
+    setTimeout(() => {
+        updateProjectCard(projectCard, currentProject);
+        // Complete the rotation
+        rotatingCard.style.transform = 'rotateY(0deg)';
+    }, 300);
+}
 
-        const rotateX = (mouseY / (cardRect.height / 2)) * -10; // Max tilt 10deg
-        const rotateY = (mouseX / (cardRect.width / 2)) * 10;   // Max tilt 10deg
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-        card.style.boxShadow = `0 ${Math.abs(rotateX) + Math.abs(rotateY)}px ${Math.abs(rotateX) + Math.abs(rotateY) + 20}px rgba(0, 0, 0, 0.4), 0 0 0 3px var(--neon-glow-color)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-        card.style.boxShadow = '0 8px 32px 0 var(--card-shadow-glass)';
-    });
-});
+function updateProjectCard(card, project) {
+    const typeLabel = card.querySelector('.project-type-label');
+    const image = card.querySelector('.project-image');
+    const title = card.querySelector('h3');
+    const description = card.querySelector('p');
+    const viewBtn = card.querySelector('.view-project-btn');
+    const githubBtn = card.querySelector('.github-button');
+    
+    typeLabel.textContent = project.type;
+    image.src = project.image;
+    image.alt = project.title + ' Screenshot';
+    title.textContent = project.title;
+    description.textContent = project.description;
+    viewBtn.href = project.viewLink;
+    githubBtn.href = project.githubLink;
+}
 
 // Hide preloader when page loads
 window.addEventListener('load', () => {
@@ -106,30 +176,7 @@ window.addEventListener('load', () => {
     }
 });
 
-// Initialize Swiper
-const swiper = new Swiper('.projects-slider', {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop: true,
-    autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-        768: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-        },
-    },
-});
+// Swiper removed - now using custom rotation system
 
 
 // Initialize AOS
