@@ -63,11 +63,19 @@ body.dark-mode {
     --card-shadow-glass-light: var(--card-shadow-glass);
 }
 
-body {
-    font-family: 'Inter', sans-serif;
+* {
+    box-sizing: border-box;
+}
+
+html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
     background-color: var(--secondary-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -452,15 +460,117 @@ section h2 {
     box-shadow: 0 0 20px var(--neon-glow-color), 0 0 0 3px var(--neon-glow-color); /* Neon glow on hover */
 }
 
-/* Projects Section */
-.projects-slider {
-    margin-top: 40px;
-    padding-bottom: 60px; /* Space for pagination */
+/*=============== PROJECTS ===============*/
+.projects-section {
     position: relative;
+}
+
+.project__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  position: relative;
+}
+
+.projects-slider {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .projects-slider .swiper-slide {
     height: auto;
+    width: 400px; /* Fixed width for single project */
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Single project rotation container */
+.single-project-container {
+    perspective: 1000px;
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rotating-project-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+}
+
+/* Hover rotation removed - rotation only on button click */
+
+/* Single project card */
+.project-card {
+    width: 100%;
+    height: 100%;
+}
+
+/* Side arrow buttons for project rotation */
+.project-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg, var(--button-gradient-start), var(--button-gradient-end));
+    color: var(--text-color);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-arrow-left {
+    left: 20px;
+}
+
+.project-arrow-right {
+    right: 20px;
+}
+
+.project-arrow:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px var(--neon-glow-color), 0 4px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(90deg, var(--neon-glow-color), var(--primary-color));
+}
+
+.project-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Responsive design for arrow buttons */
+@media (max-width: 768px) {
+    .project-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .project-arrow-left {
+        left: 10px;
+    }
+    
+    .project-arrow-right {
+        right: 10px;
+    }
 }
 
 .project-card {
@@ -476,12 +586,6 @@ section h2 {
     flex-direction: column;
     height: 100%; /* Ensure cards fill slide height */
     position: relative;
-}
-
-.project-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2), 0 0 0 3px var(--neon-glow-color); /* Enhanced hover shadow with glow */
-    border-color: var(--primary-color); /* Accent border on hover */
 }
 
 /* Project Type Label */
@@ -550,10 +654,7 @@ section h2 {
     color: var(--text-color);
 }
 
-.view-project-btn:hover, .github-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px var(--neon-glow-color);
-}
+/* Hover effects removed for single project display */
 
 /* Swiper Navigation */
 .swiper-button-next, .swiper-button-prev {
