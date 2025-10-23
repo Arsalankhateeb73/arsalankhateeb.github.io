@@ -78,7 +78,7 @@ const projects = [
         title: "Netflix Stock Data Analysis Agent",
         description: "An agent designed to analyze Netflix stock data for insights and predictions.",
         viewLink: "#",
-        githubLink: "https://github.com/Arsalankhateeb73/Netflix_Stock-dat-Analysis"
+        githubLink: "https://github.com/Arsalankhateeb73/Netflix_Stock-data_Analysis"
     },
     {
         type: "AI",
@@ -262,3 +262,4 @@ navLinks.querySelectorAll('a').forEach(link => {
         navLinks.classList.remove('active');
     });
 });
+
