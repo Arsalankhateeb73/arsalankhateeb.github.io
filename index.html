@@ -90,89 +90,29 @@
     <section id="projects" class="projects-section">
         <div class="container">
             <h2>Projects</h2>
-            <!-- Swiper -->
-            <div class="swiper-container projects-slider" data-aos="fade-up">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide project-card">
-                        <span class="project-type-label">AI</span>
-                        <img src="Assets\code-explainer_image.png" alt="Code Explainer Project Screenshot" class="project-image">
-                        <div class="project-info">
-                            <h3>Code Explainer Project</h3>
-                            <p>An AI model leveraging CodeLlama to explain complex code snippets.</p>
-                            <div class="project-buttons">
-                                <a href="#" target="_blank" class="view-project-btn">View Project</a>
-                                <a href="https://github.com/Arsalankhateeb73/CODE-EXPLAIN" target="_blank" class="github-button">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide project-card">
-                        <span class="project-type-label">ML</span>
-                        <img src="Assets\Netflix-stock_image.jpeg" alt="Netflix Stock Data Analysis Agent Screenshot" class="project-image">
-                        <div class="project-info">
-                            <h3>Netflix Stock Data Analysis Agent</h3>
-                            <p>An agent designed to analyze Netflix stock data for insights and predictions.</p>
-                            <div class="project-buttons">
-                                <a href="#" target="_blank" class="view-project-btn">View Project</a>
-                                <a href="https://github.com/Arsalankhateeb73/Netflix_Stock-dat-Analysis" target="_blank" class="github-button">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide project-card">
-                        <span class="project-type-label">AI</span>
-                        <img src="Assets\content-suggestion-agent_image.jpeg" alt="Content Suggestion Agent Screenshot" class="project-image">
-                        <div class="project-info">
-                            <h3>Content Suggestion Agent</h3>
-                            <p>An intelligent agent that suggests personalized content based on user preferences.</p>
-                            <div class="project-buttons">
-                                <a href="#" target="_blank" class="view-project-btn">View Project</a>
-                                <a href="https://github.com/Arsalankhateeb73/Content-Suggestion-Agent" target="_blank" class="github-button">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide project-card">
-                        <span class="project-type-label">Web</span>
-                        <img src="Assets\Fitty_image.jpg" alt="Food Ordering Website Screenshot" class="project-image">
-                        <div class="project-info">
-                            <h3>Fitty: A fitness tracking companion</h3>
-                            <p>A responsive web application for fitness tracking online with a user-friendly interface.</p>
-                            <div class="project-buttons">
-                                <a href="#" target="_blank" class="view-project-btn">View Project</a>
-                                <a href="https://github.com/Arsalankhateeb73/-Fitty-simple-fitness-tracker" target="_blank" class="github-button">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide project-card">
-                        <span class="project-type-label">Web</span>
-                        <img src="Assets\Smart-attendance-curriculum-image.JPG" alt="Online Quiz System Screenshot" class="project-image">
-                        <div class="project-info">
-                            <h3>(SCAS)Smart Curriculum and Attendance System</h3>
-                            <p>A Smart Curriculum and Attendance System for the University.</p>
-                            <div class="project-buttons">
-                                <a href="#" target="_blank" class="view-project-btn">View Project</a>
-                                <a href="https://github.com/Arsalankhateeb73/Smart-curriculum-Attendance" target="_blank" class="github-button">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide project-card">
-                        <span class="project-type-label">ML</span>
-                        <img src="Assets\Spam_email_image.png" alt="Spam Email Classifier Screenshot" class="project-image">
-                        <div class="project-info">
-                            <h3>Spam Email Classifier (ML)</h3>
-                            <p>A machine learning model to accurately classify and filter out spam emails.</p>
-                            <div class="project-buttons">
-                                <a href="#" target="_blank" class="view-project-btn">View Project</a>
-                                <a href="https://github.com/Arsalankhateeb73/Spam-email-detection" target="_blank" class="github-button">GitHub</a>
+            <!-- Single Project with Rotation -->
+            <div class="project__container" data-aos="fade-up">
+                <div class="single-project-container">
+                    <div class="rotating-project-card">
+                        <div class="project-card">
+                            <span class="project-type-label">AI</span>
+                            <img src="Assets\code-explainer_image.png" alt="Code Explainer Project Screenshot" class="project-image">
+                            <div class="project-info">
+                                <h3>Code Explainer Project</h3>
+                                <p>An AI model leveraging CodeLlama to explain complex code snippets.</p>
+                                <div class="project-buttons">
+                                    <a href="#" target="_blank" class="view-project-btn">View Project</a>
+                                    <a href="https://github.com/Arsalankhateeb73/CODE-EXPLAIN" target="_blank" class="github-button">GitHub</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- Add Navigation -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
             </div>
         </div>
+        <!-- Side arrow buttons for rotation - moved outside container -->
+        <button class="project-arrow project-arrow-left" onclick="rotateProject('prev')">‹</button>
+        <button class="project-arrow project-arrow-right" onclick="rotateProject('next')">›</button>
     </section>
 
     <!-- Internship Section -->
@@ -205,11 +145,11 @@
     <section id="contact" class="contact-section">
         <div class="container" data-aos="fade-up">
             <h2>Contact</h2>
-            <p>Email: <a href="mailto:arsalan9850@gmail.com">arsalan9850@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/arsalan-khateeb-03704b28b" target="_blank">https://www.linkedin.com/in/arsalan-khateeb-03704b28b</a></p>
-            <p>GitHub: <a href="https://github.com/Arsalankhateeb73" target="_blank">https://github.com/Arsalankhateeb73</a></p>
+            <p>Email: <a href="mailto:your.email@example.com">arsalan9850@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">https://www.linkedin.com/in/arsalan-khateeb-03704b28b</a></p>
+            <p>GitHub: <a href="https://github.com/yourprofile" target="_blank">https://github.com/Arsalankhateeb73</a></p>
 
-            <form action="https://formsubmit.co/arsalan9850@gmail.com" method="POST" class="contact-form" data-aos="fade-up" data-aos-delay="100">
+            <form action="https://formsubmit.co/your.email@example.com" method="POST" class="contact-form" data-aos="fade-up" data-aos-delay="100">
                 <input type="hidden" name="_subject" value="New Portfolio Contact!">
                 <input type="hidden" name="_next" value="https://yourusername.github.io/yourrepo/#contact-success">
                 <input type="text" name="name" placeholder="Your Name" required>
@@ -238,6 +178,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
